@@ -1,0 +1,30 @@
+{
+    "name": "advantagemedia/phplibrary",
+    "description": "a small framework to handle PHP projects. ",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "JPS",
+            "email": "dev@advantage.com.mt"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "TAS\\Core\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TAS\\Core\\Test\\": "test/"
+        }
+    },
+    "require": {
+        "php": ">=8.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "phpmailer/phpmailer": "~6.1",
+        "ext-filter": "*"
+    }
+    
+}
