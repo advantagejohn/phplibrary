@@ -192,7 +192,12 @@ class DocumentFile extends \TAS\Core\UserFile
 
     public static function DownloadURL($document)
     {
-        return $GLOBALS['AppConfig']['HomeURL'] . '/document/' . $document['id'] . '/' . $document['name'];
+        // Make filename web-friendly by replacing spaces with dashes and removing unsafe characters
+        $webFriendlyName = preg_replace('/[^a-zA-Z0-9._-]/', '-', $document['name']);
+        $webFriendlyName = preg_replace('/-+/', '-', $webFriendlyName); // Replace multiple dashes with single dash
+        $webFriendlyName = trim($webFriendlyName, '-'); // Remove leading/trailing dashes
+        
+        return $GLOBALS['AppConfig']['HomeURL'] . '/document/' . $document['id'] . '/' . $webFriendlyName;
     }
 
 

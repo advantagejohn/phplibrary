@@ -608,8 +608,9 @@ class ImageFile extends UserFile
         $imageOk = true;
         $im = null;
         $imageOk = static::CreateImage($image_type, $img, $im);
-        if (!$imageOk) {
-            trigger_error('Unsupported File Type', E_USER_WARNING);
+        if (!$imageOk || is_bool($im)) {
+            trigger_error('Unsupported File Type', E_USER_ERROR);
+            return false;
         }
 
         if ($thumb_width > 0 && 0 == $thumb_height) {
